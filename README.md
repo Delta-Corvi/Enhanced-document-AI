@@ -1,10 +1,11 @@
 # Document AI Multi-Agent Assistant Plus
-![Uploading Gemini_Generated_Image_ho6kwiho6kwiho6k.png…]()
-
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![ReadyTensor](https://img.shields.io/badge/ReadyTensor-AAIDC2025-green.svg)](https://readytensor.ai)
+
+<img width="854" height="943" alt="Enhanced-document-AI_screen" src="https://github.com/user-attachments/assets/c30cd9eb-2141-44cf-99de-a19edf2e40e8" />
+
 
 > **Module 3 Project for Ready Tensor Agentic AI Developer Certification 2025 (AAIDC2025)**
 
