@@ -1,0 +1,475 @@
+# Enhanced Document AI Multi-Agent Assistant - Environment Configuration
+# Copy this file to .env and configure your API keys and settings
+
+# =============================================================================
+# 🔑 REQUIRED API KEYS
+# =============================================================================
+
+# Google Gemini API Key (REQUIRED)
+# Get your free API key from: https://ai.google.dev/
+# Example format: AIzaSyDxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+GEMINI_API_KEY=your_gemini_api_key_here
+
+# Guardrails AI API Key (OPTIONAL but RECOMMENDED for enhanced security)
+# Get your API key from: https://www.guardrailsai.com/
+# Note: Many Guardrails features work locally without API key
+# Example format: gr_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+GUARDRAILS_API_KEY=your_guardrails_api_key_here
+
+# =============================================================================
+# 🚀 APPLICATION SETTINGS
+# =============================================================================
+
+# Server Configuration
+SERVER_HOST=0.0.0.0
+SERVER_PORT=7860
+
+# Application Environment (development/staging/production)
+ENVIRONMENT=development
+
+# Log Level (DEBUG/INFO/WARNING/ERROR/CRITICAL)
+LOG_LEVEL=INFO
+
+# =============================================================================
+# 🛡️ GUARDRAILS AI SECURITY SETTINGS
+# =============================================================================
+
+# Guardrails AI Configuration
+GUARDRAILS_ENABLED=true
+GUARDRAILS_STRICT_MODE=false    # Set to true for maximum security
+GUARDRAILS_PERMISSIVE_MODE=false # Set to true for minimal filtering
+
+# Content Safety Thresholds (0.0 = very strict, 1.0 = very permissive)
+TOXICITY_THRESHOLD=0.8          # Recommended: 0.7-0.9
+PROFANITY_THRESHOLD=0.0         # Zero tolerance recommended
+PII_SENSITIVITY=medium          # low/medium/high
+
+# Content Filtering Features
+ENABLE_PII_DETECTION=true       # Detect personally identifiable information
+ENABLE_PROFANITY_FILTER=true    # Filter inappropriate language
+ENABLE_TOXICITY_FILTER=true     # Filter toxic/harmful content
+ENABLE_SQL_INJECTION_FILTER=true # Prevent SQL injection attacks
+ENABLE_TOPIC_RESTRICTION=false  # Restrict to approved topics only
+
+# PII Detection Entities (comma-separated)
+PII_ENTITIES=PHONE_NUMBER,EMAIL_ADDRESS,CREDIT_CARD,SSN,PERSON,LOCATION
+
+# Topic Control (when ENABLE_TOPIC_RESTRICTION=true)
+ALLOWED_TOPICS=research,academic,business,technical,educational,scientific
+FORBIDDEN_TOPICS=violence,hate,adult,illegal,weapons,drugs
+
+# =============================================================================
+# 🚦 RATE LIMITING & SECURITY
+# =============================================================================
+
+# File Upload Security
+MAX_FILE_SIZE=52428800          # 50MB in bytes
+ALLOWED_EXTENSIONS=.pdf,.txt,.docx
+
+# Rate Limiting (requests per hour per user)
+RATE_LIMIT_REQUESTS=100         # General requests
+RATE_LIMIT_UPLOADS=10           # Document uploads
+RATE_LIMIT_QUESTIONS=50         # Q&A requests
+RATE_LIMIT_VALIDATIONS=200      # Safety validations
+
+# Security Features
+ENABLE_INPUT_SANITIZATION=true
+ENABLE_OUTPUT_SANITIZATION=true
+ENABLE_FILENAME_VALIDATION=true
+ENABLE_CONTENT_LENGTH_CHECK=true
+
+# =============================================================================
+# ⚡ OPERATIONAL RESILIENCE SETTINGS
+# =============================================================================
+
+# Circuit Breaker Configuration
+CIRCUIT_BREAKER_ENABLED=true
+CIRCUIT_BREAKER_FAILURE_THRESHOLD=5
+CIRCUIT_BREAKER_RECOVERY_TIMEOUT=60
+
+# Retry Configuration for API Calls
+MAX_RETRIES=3
+RETRY_BASE_DELAY=1              # Initial delay in seconds
+RETRY_MAX_DELAY=60              # Maximum delay in seconds
+RETRY_EXPONENTIAL_BASE=2        # Exponential backoff multiplier
+
+# Health Monitoring
+HEALTH_CHECK_ENABLED=true
+HEALTH_CHECK_INTERVAL=60        # Health check frequency in seconds
+PERFORMANCE_MONITORING=true
+ENABLE_METRICS_COLLECTION=true
+
+# Fallback Strategies
+ENABLE_FALLBACK_STRATEGIES=true
+FALLBACK_TO_BASIC_SAFETY=true   # Use basic patterns if Guardrails fails
+
+# =============================================================================
+# 💾 STORAGE & CACHING
+# =============================================================================
+
+# State Management
+ENABLE_STATE_PERSISTENCE=true
+STATE_CLEANUP_INTERVAL=3600     # 1 hour in seconds
+SESSION_MAX_AGE=86400           # 24 hours in seconds
+MAX_SESSIONS=1000               # Maximum concurrent sessions
+
+# Caching Configuration
+ENABLE_CACHING=false            # Set to true in production
+CACHE_TTL=3600                  # 1 hour in seconds
+MAX_CACHE_SIZE=1000             # Maximum cached items
+CACHE_VALIDATION_RESULTS=false  # Cache Guardrails validation results
+
+# =============================================================================
+# 🤖 AI MODEL SETTINGS
+# =============================================================================
+
+# Google Gemini Configuration
+GEMINI_MODEL=gemini-pro
+GEMINI_TEMPERATURE=0.7          # 0.0 = deterministic, 1.0 = creative
+GEMINI_MAX_TOKENS=1024
+GEMINI_TOP_P=0.8
+GEMINI_TOP_K=40
+
+# Processing Limits
+MAX_DOCUMENT_PAGES=50
+MAX_PROCESSING_TIME=300         # 5 minutes in seconds
+MAX_CONCURRENT_REQUESTS=10
+MAX_DOCUMENT_LENGTH=100000      # Characters
+
+# =============================================================================
+# 🎨 USER INTERFACE SETTINGS
+# =============================================================================
+
+# Gradio Interface Configuration
+UI_THEME=default                # default/dark/light
+ENABLE_DARK_MODE=false
+SHOW_PROGRESS_BARS=true
+ENABLE_FILE_PREVIEW=true
+MAX_UPLOAD_SIZE_MB=50
+
+# Feature Flags
+ENABLE_BATCH_PROCESSING=false
+ENABLE_ADVANCED_ANALYTICS=false
+ENABLE_EXPORT_FEATURES=true
+ENABLE_QUESTION_HISTORY=true
+ENABLE_PROCESSING_HISTORY=true
+
+# UI Customization
+BRAND_NAME=Enhanced Document AI
+BRAND_COLOR=#2196F3
+SHOW_API_DOCS_LINK=true
+
+# =============================================================================
+# 📊 MONITORING & LOGGING
+# =============================================================================
+
+# Logging Configuration
+LOG_TO_FILE=true
+LOG_ROTATION=true
+MAX_LOG_SIZE=100MB
+LOG_BACKUP_COUNT=10
+LOG_FORMAT=detailed             # simple/detailed/json
+
+# Security Logging
+SECURITY_LOG_ENABLED=true
+LOG_SECURITY_EVENTS=true
+LOG_FAILED_VALIDATIONS=true
+LOG_RATE_LIMIT_VIOLATIONS=true
+
+# Performance Monitoring
+ENABLE_RESPONSE_TIME_TRACKING=true
+ENABLE_MEMORY_MONITORING=true
+ENABLE_ERROR_TRACKING=true
+METRICS_EXPORT_INTERVAL=300     # 5 minutes
+
+# Error Tracking (Optional - requires Sentry account)
+# SENTRY_DSN=https://your-sentry-dsn@sentry.io/project-id
+# SENTRY_ENVIRONMENT=development
+# SENTRY_TRACES_SAMPLE_RATE=0.1
+
+# =============================================================================
+# 🐳 DEPLOYMENT SETTINGS
+# =============================================================================
+
+# Docker Configuration
+DOCKER_HEALTHCHECK_INTERVAL=30
+DOCKER_HEALTHCHECK_TIMEOUT=10
+DOCKER_HEALTHCHECK_RETRIES=3
+DOCKER_RESTART_POLICY=unless-stopped
+
+# Production Optimizations
+PYTHON_OPTIMIZE=false           # Set to true in production
+PRELOAD_MODELS=false           # Set to true in production for faster startup
+WORKER_PROCESSES=1             # Increase in production based on CPU cores
+ENABLE_GZIP_COMPRESSION=true
+
+# SSL/TLS Configuration (for production HTTPS)
+# SSL_ENABLED=false
+# SSL_KEYFILE=/path/to/private.key
+# SSL_CERTFILE=/path/to/certificate.crt
+# SSL_CA_CERTS=/path/to/ca-bundle.crt
+
+# =============================================================================
+# 🧪 DEVELOPMENT & TESTING SETTINGS
+# =============================================================================
+
+# Development Mode
+DEBUG_MODE=false               # Set to true for development debugging
+DEV_RELOAD=false              # Set to true for auto-reload during development
+SHOW_ERROR_DETAILS=true       # Set to false in production
+ENABLE_STACK_TRACES=true      # Show full stack traces in errors
+
+# Testing Configuration
+ENABLE_TEST_ROUTES=false      # Set to true to enable testing endpoints
+TEST_DATA_PATH=test_data/
+RUN_TESTS_ON_STARTUP=false    # Auto-run tests when starting
+TEST_COVERAGE_THRESHOLD=80    # Minimum test coverage percentage
+
+# Development Tools
+ENABLE_PROFILING=false        # Enable performance profiling
+ENABLE_MEMORY_PROFILING=false # Enable memory usage profiling
+SHOW_GRADIO_ANALYTICS=false   # Gradio usage analytics
+
+# =============================================================================
+# 🌍 LOCALIZATION & INTERNATIONALIZATION
+# =============================================================================
+
+# Language Settings
+DEFAULT_LANGUAGE=en
+SUPPORTED_LANGUAGES=en,es,fr,de,it
+ENABLE_AUTO_LANGUAGE_DETECTION=false
+
+# Timezone
+DEFAULT_TIMEZONE=UTC
+ENABLE_TIMEZONE_CONVERSION=false
+
+# =============================================================================
+# 📝 EXAMPLE CONFIGURATIONS BY ENVIRONMENT
+# =============================================================================
+
+# 🚀 PRODUCTION EXAMPLE:
+# ENVIRONMENT=production
+# LOG_LEVEL=WARNING
+# GUARDRAILS_STRICT_MODE=true
+# ENABLE_CACHING=true
+# PYTHON_OPTIMIZE=true
+# PRELOAD_MODELS=true
+# SHOW_ERROR_DETAILS=false
+# RATE_LIMIT_REQUESTS=50
+# MAX_CONCURRENT_REQUESTS=20
+# SSL_ENABLED=true
+
+# 🧪 DEVELOPMENT EXAMPLE:
+# ENVIRONMENT=development
+# LOG_LEVEL=DEBUG
+# DEBUG_MODE=true
+# DEV_RELOAD=true
+# ENABLE_TEST_ROUTES=true
+# SHOW_ERROR_DETAILS=true
+# GUARDRAILS_PERMISSIVE_MODE=true
+
+# 🏗️ STAGING EXAMPLE:
+# ENVIRONMENT=staging
+# LOG_LEVEL=INFO
+# GUARDRAILS_ENABLED=true
+# ENABLE_CACHING=true
+# PERFORMANCE_MONITORING=true
+# SENTRY_ENVIRONMENT=staging
+
+# =============================================================================
+# 📋 SETUP CHECKLIST
+# =============================================================================
+
+# ✅ Required Steps:
+# 1. Get Gemini API key from https://ai.google.dev/
+# 2. (Optional) Get Guardrails API key from https://www.guardrailsai.com/
+# 3. Copy this file to .env
+# 4. Replace 'your_*_api_key_here' with actual API keys
+# 5. Adjust settings based on your environment
+# 6. Run: python enhanced_ui.py
+
+# ⚠️  Security Reminders:
+# - Never commit .env files to version control
+# - Use strong, unique API keys
+# - Regularly rotate API keys
+# - Use environment-specific configurations
+# - Monitor API usage and costs
+# - Enable stricter settings in production
+# - Review logs regularly for security events
+
+# 🔗 Useful Links:
+# - Gemini API: https://ai.google.dev/
+# - Guardrails AI: https://www.guardrailsai.com/
+# - Documentation: https://your-docs-site.com
+# - GitHub Issues: https://github.com/your-repo/issues
+
+# =============================================================================
+# APPLICATION SETTINGS
+# =============================================================================
+
+# Server Configuration
+SERVER_HOST=0.0.0.0
+SERVER_PORT=7860
+
+# Application Environment (development/staging/production)
+ENVIRONMENT=development
+
+# Log Level (DEBUG/INFO/WARNING/ERROR/CRITICAL)
+LOG_LEVEL=INFO
+
+# =============================================================================
+# SAFETY & SECURITY SETTINGS
+# =============================================================================
+
+# File Upload Limits
+MAX_FILE_SIZE=52428800  # 50MB in bytes
+ALLOWED_EXTENSIONS=.pdf,.txt,.docx
+
+# Rate Limiting (requests per hour per user)
+RATE_LIMIT_REQUESTS=100
+RATE_LIMIT_UPLOADS=10
+RATE_LIMIT_QUESTIONS=50
+
+# Guardrails AI Settings
+GUARDRAILS_ENABLED=true
+GUARDRAILS_STRICT_MODE=false    # Set to true for stricter content filtering
+GUARDRAILS_PERMISSIVE_MODE=false # Set to true for more permissive filtering
+TOXICITY_THRESHOLD=0.8          # 0.0 (strict) to 1.0 (permissive)
+
+# Content Filtering
+ENABLE_PII_DETECTION=true
+ENABLE_PROFANITY_FILTER=true
+ENABLE_TOXICITY_FILTER=true
+ENABLE_SQL_INJECTION_FILTER=true
+
+# =============================================================================
+# OPERATIONAL RESILIENCE SETTINGS
+# =============================================================================
+
+# Circuit Breaker Settings
+CIRCUIT_BREAKER_FAILURE_THRESHOLD=5
+CIRCUIT_BREAKER_RECOVERY_TIMEOUT=60
+
+# Retry Configuration
+MAX_RETRIES=3
+RETRY_BASE_DELAY=1
+RETRY_MAX_DELAY=60
+
+# Health Monitoring
+HEALTH_CHECK_ENABLED=true
+HEALTH_CHECK_INTERVAL=60        # seconds
+PERFORMANCE_MONITORING=true
+
+# =============================================================================
+# STORAGE & CACHING
+# =============================================================================
+
+# State Management
+ENABLE_STATE_PERSISTENCE=true
+STATE_CLEANUP_INTERVAL=3600     # 1 hour in seconds
+SESSION_MAX_AGE=86400           # 24 hours in seconds
+
+# Caching
+ENABLE_CACHING=false            # Set to true in production
+CACHE_TTL=3600                  # 1 hour in seconds
+MAX_CACHE_SIZE=1000
+
+# =============================================================================
+# ADVANCED SETTINGS
+# =============================================================================
+
+# AI Model Settings
+GEMINI_MODEL=gemini-pro
+GEMINI_TEMPERATURE=0.7
+GEMINI_MAX_TOKENS=1024
+
+# Processing Limits
+MAX_DOCUMENT_PAGES=50
+MAX_PROCESSING_TIME=300         # 5 minutes in seconds
+MAX_CONCURRENT_REQUESTS=10
+
+# Feature Flags
+ENABLE_BATCH_PROCESSING=false
+ENABLE_ADVANCED_ANALYTICS=false
+ENABLE_EXPORT_FEATURES=true
+ENABLE_QUESTION_HISTORY=true
+
+# =============================================================================
+# MONITORING & LOGGING
+# =============================================================================
+
+# Logging Configuration
+LOG_TO_FILE=true
+LOG_ROTATION=true
+MAX_LOG_SIZE=100MB
+LOG_BACKUP_COUNT=10
+
+# Performance Monitoring
+ENABLE_METRICS_COLLECTION=true
+METRICS_EXPORT_INTERVAL=300     # 5 minutes
+
+# Error Tracking (Optional - requires Sentry account)
+# SENTRY_DSN=your_sentry_dsn_here
+# SENTRY_ENVIRONMENT=development
+
+# =============================================================================
+# DEPLOYMENT SETTINGS
+# =============================================================================
+
+# Docker Settings
+DOCKER_HEALTHCHECK_INTERVAL=30
+DOCKER_HEALTHCHECK_TIMEOUT=10
+DOCKER_HEALTHCHECK_RETRIES=3
+
+# Production Optimizations
+PYTHON_OPTIMIZE=false           # Set to true in production
+PRELOAD_MODELS=false           # Set to true in production for faster startup
+WORKER_PROCESSES=1             # Increase in production
+
+# SSL/TLS (for production)
+# SSL_KEYFILE=/path/to/keyfile
+# SSL_CERTFILE=/path/to/certfile
+
+# =============================================================================
+# DEVELOPMENT SETTINGS
+# =============================================================================
+
+# Development Mode
+DEBUG_MODE=false               # Set to true for development
+DEV_RELOAD=false              # Set to true for auto-reload during development
+SHOW_ERROR_DETAILS=true       # Set to false in production
+
+# Testing
+ENABLE_TEST_ROUTES=false      # Set to true for testing endpoints
+TEST_DATA_PATH=test_data/
+
+# =============================================================================
+# EXAMPLE VALUES (for reference)
+# =============================================================================
+
+# Example Gemini API Key format:
+# GEMINI_API_KEY=AIzaSyDxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+# Example Guardrails API Key format:  
+# GUARDRAILS_API_KEY=gr_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+# Example Production Settings:
+# ENVIRONMENT=production
+# LOG_LEVEL=WARNING
+# GUARDRAILS_STRICT_MODE=true
+# ENABLE_CACHING=true
+# PYTHON_OPTIMIZE=true
+# PRELOAD_MODELS=true
+# SHOW_ERROR_DETAILS=false
+
+# =============================================================================
+# NOTES
+# =============================================================================
+
+# 1. Never commit your actual API keys to version control
+# 2. Use different .env files for different environments
+# 3. Restart the application after changing environment variables
+# 4. Some settings require application restart to take effect
+# 5. Production deployments should use stricter security settings
+# 6. Monitor your API usage to avoid exceeding quotas
+# 7. Regularly rotate your API keys for security

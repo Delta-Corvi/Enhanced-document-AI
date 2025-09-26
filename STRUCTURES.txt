@@ -1,0 +1,46 @@
+Enhanced-document-ai/
+│
+├── 📄 README_Enhanced.md                    # Documentazione principale 
+├── 📄 API_DOCUMENTATION.md                  # Documentazione API
+├── 📄 FILE_STRUCTURE.md                     # Questa struttura
+├── 📄 requirements_enhanced.txt             # Dipendenze con Guardrails AI
+├── 📄 .env.example                         # Template variabili ambiente
+├── 📄 enhanced_ui.py                       # Interfaccia Gradio potenziata
+├── 📄 deploy.sh                           # Script deployment automatico
+├── 📄 Dockerfile                          # Container Docker
+├── 📄 docker-healthcheck.py               # Health check Docker
+│
+├── 📁 enhanced_modules/                    # ⭐ NUOVO: Moduli potenziati
+│   ├── 📄 __init__.py                     
+│   ├── 📄 safety_module.py               # ⭐ Safety con Guardrails AI
+│   └── 📄 resilience_module.py           # ⭐ Resilienza operativa
+│
+├── 📁 config/                             # ⭐ NUOVO: Configurazioni
+│   ├── 📄 __init__.py                    
+│   └── 📄 guardrails_config.py           # ⭐ Config Guardrails AI
+│
+├── 📁 tests/                              # ⭐ NUOVO: Test suite
+│   ├── 📄 __init__.py
+│   ├── 📄 test_agents.py                 # ⭐ Test completi
+│   └── 📄 pytest.ini                    # ⭐ Config pytest
+│
+├── 📁 agents/                            # Mantieni esistenti
+│   ├── 📄 __init__.py
+│   ├── 📄 summarizer_agent.py          # File originale
+│   ├── 📄 question_agent.py            # File originale  
+│   └── 📄 metadata_agent.py            # File originale
+│
+├── 📁 utils/                             # Mantieni esistenti
+│   ├── 📄 __init__.py
+│   ├── 📄 gemini_client.py             # File originale
+│   └── 📄 validator.py                 # File originale
+│
+├── 📁 scripts/                           # Auto-generati da deploy.sh
+│   ├── 📄 monitor.sh                   # Monitoraggio processi
+│   ├── 📄 analyze_logs.sh              # Analisi log
+│   └── 📄 rotate_logs.sh               # Rotazione log
+│
+├── 📁 logs/                              # Auto-creata
+├── 📁 data/                              # Esistente
+├── 📁 metadata_exports/                  # Esistente
+└── 📁 state/                             # Auto-creata
